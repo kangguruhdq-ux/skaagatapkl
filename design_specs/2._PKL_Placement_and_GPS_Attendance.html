@@ -1,0 +1,369 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><title>Pkl</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary": "#3d445a", "on-primary": "#ffffff", "tertiary-fixed": "#dae2fd", "on-tertiary-fixed": "#131b2e", "error-container": "#ffdad6", "secondary-container": "#5bb8fe", "surface": "#f8f9ff", "tertiary-fixed-dim": "#bec6e0", "primary-fixed-dim": "#b7c4ff", "surface-container-highest": "#d3e4fe", "surface-variant": "#d3e4fe", "surface-container-low": "#eff4ff", "on-tertiary-container": "#cdd5ef", "on-surface": "#0b1c30", "surface-container-lowest": "#ffffff", "primary-fixed": "#dce1ff", "surface-container-high": "#dce9ff", "on-secondary-container": "#00476e", "primary-container": "#1d4ed8", "secondary": "#006398", "on-error-container": "#93000a", "on-surface-variant": "#434655", "on-error": "#ffffff", "on-primary-container": "#cad3ff", "on-secondary-fixed": "#001d31", "inverse-primary": "#b7c4ff", "outline-variant": "#c4c5d7", "inverse-surface": "#213145", "error": "#ba1a1a", "on-tertiary-fixed-variant": "#3f465c", "surface-dim": "#cbdbf5", "on-secondary": "#ffffff", "on-tertiary": "#ffffff", "surface-container": "#e5eeff", "on-primary-fixed": "#001551", "outline": "#747686", "primary": "#0037b0", "secondary-fixed-dim": "#93ccff", "surface-bright": "#f8f9ff", "on-background": "#0b1c30", "tertiary-container": "#545c72", "on-secondary-fixed-variant": "#004b73", "inverse-on-surface": "#eaf1ff", "background": "#f8f9ff", "surface-tint": "#2151da", "on-primary-fixed-variant": "#0039b5", "secondary-fixed": "#cce5ff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "1.5rem", "margin-mobile": "1rem", "space-lg": "1rem", "space-sm": "0.5rem", "gutter-mobile": "0.75rem", "space-md": "0.75rem", "gutter": "1rem", "space-xs": "0.25rem", "margin": "1rem" }, "fontFamily": { "label-sm": ["Inter"], "body-lg": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "body-md": ["Inter"], "label-lg": ["Inter"], "label-md": ["Inter"], "mono-metric": ["Inter"] }, "fontSize": { "label-sm": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "700"}], "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}], "headline-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}], "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}], "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}], "headline-xl-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700"}], "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600"}], "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}], "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}], "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "500"}], "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}], "mono-metric": ["18px", {"lineHeight": "22px", "letterSpacing": "-0.02em", "fontWeight": "600"}] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0 flex-1"><img alt="SKAGATA PKL Intelligence Brand Logo" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlA4ZI-CQFMgm0A0kzWpFsyPFqqTTcwZFgIJyzqgVPiRs6eTxJocxNDv_HjItWnwQJv21olgkO9zIfq3nojDH_LmfAAAxYHKynyIK1Uq5QPOdzaQLoMDMuvWTDT9rh_4Ew-VB_lFcJAXMBUhScgvYgORDhOLmGg8v1mxVdsSafBqlvD4qqqaMLg_eO767OU1M6DgExOpwpC9kRzaX9ZkXrMBI1sq7rARh9W70X6G4Be-kUcydskz-sMg"><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight truncate">SKAGATA</span><span class="font-label-sm text-label-sm uppercase px-1.5 py-0.5 rounded bg-primary text-on-primary font-bold tracking-wider shrink-0">PKL AI</span></div><span class="font-body-sm text-body-sm text-on-surface-variant truncate">SMKN 3 Yogyakarta</span></div></div><div class="flex items-center gap-space-xs shrink-0"><div class="hidden xs:flex items-center gap-1.5 px-2 py-1 rounded-full bg-surface-container-low shadow-[0_1px_3px_rgba(0,0,0,0.03)]"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">WS LIVE</span></div><button aria-label="Notifications" class="relative w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2 right-2 w-4 h-4 rounded-full bg-primary-container text-on-primary font-label-sm text-[9px] font-bold flex items-center justify-center ring-2 ring-surface">3</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-20 bg-surface"><div class="flex flex-col w-full">
+<!-- Content Body Container -->
+<div class="px-margin-mobile pt-space-md pb-space-xl flex flex-col gap-space-lg">
+<!-- Header / Verification Overview Section -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+          Telemetry Node Lock
+        </span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-semibold">
+          KODE: PKL-TKJ-2024
+        </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+        Sistem Presensi PKL Berbasis Geofence &amp; Perangkat Terdaftar SMKN 3 Yogyakarta
+      </p>
+<!-- Registered Device Fingerprint Chip -->
+<div class="mt-space-xs flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low shadow-sm">
+<div class="flex items-center gap-2 min-w-0">
+<div class="w-8 h-8 rounded-full bg-secondary-container/30 flex items-center justify-center shrink-0 text-secondary">
+<span class="material-symbols-outlined text-[18px]">smartphone</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Samsung Galaxy A54 5G</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono text-[11px] truncate">SKGT-DEV-8842 • HARDWARE SECURE</span>
+</div>
+</div>
+<div class="flex items-center gap-1 px-2 py-1 rounded bg-emerald-500/10 text-emerald-700 shrink-0">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase font-bold tracking-tight">TERDAFTAR</span>
+</div>
+</div>
+</div>
+<!-- Geofence Radar / Interactive Map Visualization Card -->
+<div class="flex flex-col rounded-xl bg-surface-container-lowest shadow-md overflow-hidden">
+<!-- Card Sub-header -->
+<div class="p-3.5 flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">radar</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Radar Geofence Kotabaru</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Radius Perimeter Dinamis: 100m</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span class="font-label-sm text-label-sm font-bold uppercase">MATCH 99.8%</span>
+</div>
+</div>
+<!-- Map & Geofence Canvas Visualization -->
+<div class="relative w-full h-64 overflow-hidden">
+<!-- Static Map Base Render using data-location -->
+<div class="w-full h-full bg-cover bg-center" data-location="PT Telkom Indonesia Witel Yogyakarta Jl. Yos Sudarso No.9 Kotabaru Gondokusuman Yogyakarta" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDHrCKfPykVYI7qf7MUDr5gBGucpXG8MUqt6o76Oz2MTsWvZ1-JLfwKA2ZV1J3Rc4Mxh-esjxrZqQ-npjp6zDJtNvE8LPI0WfJWOdfJCwDv6pbrRXskYy8kCf858g1YbD2qFSJ7fEd95nWVuMTaA4dS0THZ7PkdEc32K5ITCeKTnI7CZ-GnxzcPLX05q8lTBFEEmt3q9IKJHmuh0wY-Vrc7R0W6NwHzJAwi-LgvPAjqUbkERM_L9WfjbQ')"></div>
+<!-- Ambient Dark & Radar Tint Overlay -->
+<div class="absolute inset-0 bg-primary/20 backdrop-blur-[1px] pointer-events-none"></div>
+<!-- Concentric Radial Geofence Pulse (Simulated Coordinates Perimeter) -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<!-- 100m Perimeter Circle -->
+<div class="w-52 h-52 rounded-full border-2 border-dashed border-emerald-400/80 bg-emerald-500/10 flex items-center justify-center relative animate-[spin_40s_linear_infinite]">
+<div class="absolute -top-3 px-2 py-0.5 rounded bg-surface-container-lowest text-emerald-800 font-label-sm text-label-sm font-bold shadow-sm">
+              Perimeter Max 100m
+            </div>
+</div>
+<!-- Pulse wave 1 -->
+<div class="absolute w-40 h-40 rounded-full border border-emerald-300/40 animate-ping opacity-60"></div>
+<!-- Pulse wave 2 -->
+<div class="absolute w-28 h-28 rounded-full bg-emerald-400/20"></div>
+<!-- Target Office Anchor Marker (Telkom Witel) -->
+<div class="absolute top-[42%] left-[46%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-[16px]">domain</span>
+</div>
+<span class="mt-0.5 font-label-sm text-[9px] px-1.5 py-0.2 rounded bg-surface-container-lowest font-bold text-on-surface shadow-sm whitespace-nowrap">
+              PT Telkom Witel
+            </span>
+</div>
+<!-- Current Student GPS Live Dot (43 meters off center) -->
+<div class="absolute top-[52%] left-[54%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<span class="absolute w-7 h-7 rounded-full bg-primary-container animate-ping opacity-75"></span>
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary ring-2 ring-surface-container-lowest flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[14px]">person_pin_circle</span>
+</div>
+</div>
+<div class="mt-1 px-1.5 py-0.5 rounded bg-surface text-primary font-label-sm text-[9px] font-bold shadow whitespace-nowrap">
+              Posisi Siswa (43m)
+            </div>
+</div>
+</div>
+<!-- GPS Real-Time Telemetry HUD Overlay -->
+<div class="absolute bottom-2 inset-x-2 p-2 rounded-lg bg-surface-container-lowest/95 backdrop-blur-md shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">gps_fixed</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">Lat: -7.78542, Long: 110.37219</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-normal">Presisi Satelit: ±4.2 meter • Mock Loc: OFF</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm uppercase px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold shrink-0">
+            KUNCI GPS AKTIF
+          </span>
+</div>
+</div>
+<!-- Distance and Boundary Status Box -->
+<div class="p-3 bg-emerald-500/10 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-800 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">near_me</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-emerald-900">Jarak ke Kantor: 43 meter</span>
+<span class="font-body-sm text-body-sm text-emerald-800 text-[11px]">Berada dalam radius aman geofence (Maksimal 100m)</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-emerald-600 text-[22px]">check_circle</span>
+</div>
+</div>
+<!-- Attendance Action & Biometric Confirmation Card -->
+<div class="p-4 rounded-xl bg-surface-container-lowest shadow-md flex flex-col gap-space-md">
+<!-- Live Authenticated Clock Header -->
+<div class="flex items-center justify-between pb-3 bg-gradient-to-r from-transparent via-surface-container-low to-transparent">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant font-bold tracking-wider">Waktu Server Terotentikasi</span>
+<div class="flex items-baseline gap-1.5 mt-0.5">
+<span class="font-mono-metric text-mono-metric font-bold text-primary tracking-tight" id="live-clock">09:44:01</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">WIB</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant font-semibold">Jadwal Penugasan</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Shift Reguler Pagi</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">08:00 — 16:30 WIB</span>
+</div>
+</div>
+<!-- Interactive Status Notice -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px] shrink-0">add_a_photo</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Verifikasi Biometrik Wajah Diperlukan</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Sistem akan memindai kontur wajah serta timestamp geolokasi instan.</span>
+</div>
+</div>
+<!-- Action Buttons Stack -->
+<div class="flex flex-col gap-2 pt-1">
+<!-- Main Check-In Button -->
+<button class="w-full h-12 rounded-lg bg-primary-container hover:bg-primary active:scale-[0.99] text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-sm transition-all duration-150" id="btn-checkin" type="button">
+<span class="material-symbols-outlined text-[20px]">fingerprint</span>
+<span class="">KONFIRMASI CHECK-IN (GPS &amp; SELFIE)</span>
+</button>
+<!-- Secondary Check-Out Button (Inactive / Disabled state) -->
+<div class="flex items-center justify-between px-3 py-2 rounded-lg bg-surface-container text-on-surface-variant opacity-75">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+<span class="font-label-md text-label-md font-medium">Presensi Kepulangan (Check-Out)</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-semibold">
+            Terkunci s.d 16:30 WIB
+          </span>
+</div>
+</div>
+<!-- Real-time Verification Feedback Modal/Drawer State (Hidden by default, triggered via JS) -->
+<div class="hidden flex-col items-center justify-center p-4 rounded-lg bg-emerald-500/10 text-emerald-900 gap-1.5 transition-all" id="scan-feedback">
+<span class="material-symbols-outlined text-emerald-600 text-[28px] animate-bounce">task_alt</span>
+<span class="font-label-md text-label-md font-bold">Presensi Berhasil Divalidasi!</span>
+<span class="font-body-sm text-body-sm text-emerald-800 text-center">Logbook kehadiran dicatat pada node server PKL Skagata.</span>
+</div>
+</div>
+<!-- Placement Details & Operational Policy Card -->
+<div class="p-4 rounded-xl bg-surface-container-lowest shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">corporate_fare</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Metadata Penempatan Industri</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-bold">
+          AKTIF
+        </span>
+</div>
+<!-- Entity Information Grid -->
+<div class="grid grid-cols-1 gap-2.5">
+<div class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container-low">
+<div class="w-9 h-9 rounded bg-surface-container-lowest flex items-center justify-center text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">apartment</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant font-bold tracking-wider">Perusahaan Mitra</span>
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">PT Telkom Indonesia (Persero) Tbk</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Divisi Akses Data, Jaringan &amp; Transmisi Witel DIY</span>
+</div>
+</div>
+<div class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container-low">
+<div class="w-9 h-9 rounded bg-surface-container-lowest flex items-center justify-center text-secondary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">supervisor_account</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant font-bold tracking-wider">Pembimbing Lapangan</span>
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-emerald-600 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Online
+              </span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">Ir. Bambang Hermanto</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Senior Network Operations Engineer</span>
+</div>
+</div>
+</div>
+<!-- Security & Policy Rules Checklist -->
+<div class="p-3 rounded-lg bg-surface-container-low flex flex-col gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface font-bold">Protokol Validitas Presensi</span>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600 text-[16px]">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Radius toleransi Geofence GPS maksimal 100 meter</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600 text-[16px]">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Deteksi Anti-Mock Location &amp; Hardware Bypass Aktif</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600 text-[16px]">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Pencocokan Biometrik Liveness Kamera Depan Real-Time</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Attendance History & Telemetry Log List -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">history_toggle_off</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Riwayat Presensi Terbaru</span>
+</div>
+<a class="font-label-sm text-label-sm text-primary font-bold hover:underline" href="#">Lihat Semua Rekap</a>
+</div>
+<!-- Recent Day List Items -->
+<div class="flex flex-col gap-2">
+<!-- Log 1: Hari Ini -->
+<div class="p-3 rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-700 flex flex-col items-center justify-center shrink-0">
+<span class="font-label-sm text-[10px] uppercase font-bold leading-none">OKT</span>
+<span class="font-headline-sm text-headline-sm font-bold leading-none mt-0.5">19</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-bold text-on-surface">Hari Ini (Sabtu)</span>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">07:42 WIB</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] truncate">Check-in valid (43m perimeter lock)</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold uppercase">
+              TEPAT WAKTU
+            </span>
+<span class="font-body-sm text-[10px] text-on-surface-variant mt-0.5">Check-Out: Pending</span>
+</div>
+</div>
+<!-- Log 2: Kemarin -->
+<div class="p-3 rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-on-surface-variant flex flex-col items-center justify-center shrink-0">
+<span class="font-label-sm text-[10px] uppercase font-bold leading-none">OKT</span>
+<span class="font-headline-sm text-headline-sm font-bold leading-none mt-0.5">18</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-bold text-on-surface">Jumat</span>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">07:48 — 16:35</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Durasi Efektif: 8 jam 47 menit</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-semibold uppercase">
+              SELESAI
+            </span>
+<span class="font-body-sm text-[10px] text-emerald-600 mt-0.5 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">verified</span> Terverifikasi
+            </span>
+</div>
+</div>
+<!-- Log 3: Dua Hari Lalu -->
+<div class="p-3 rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-on-surface-variant flex flex-col items-center justify-center shrink-0">
+<span class="font-label-sm text-[10px] uppercase font-bold leading-none">OKT</span>
+<span class="font-headline-sm text-headline-sm font-bold leading-none mt-0.5">17</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-bold text-on-surface">Kamis</span>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">07:51 — 16:30</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Durasi Efektif: 8 jam 39 menit</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-semibold uppercase">
+              SELESAI
+            </span>
+<span class="font-body-sm text-[10px] text-emerald-600 mt-0.5 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">verified</span> Terverifikasi
+            </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Student Visual ID Card Badge Footer -->
+<div class="p-3 rounded-xl bg-surface-container flex items-center gap-3">
+<img class="w-11 h-11 rounded-full object-cover shrink-0 shadow-sm" data-alt="Close up professional ID portrait of an Indonesian vocational school student wearing a clean SMK technical uniform with badge, warm friendly smile, natural lighting, high fidelity studio photograph." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeYwDOHBiKw7OQ_MA8IoOnqa58I63mwmx63TDjbC3xinB4eHJiyx-QAe8hx20IXmVlASy7OIdgZLIh8_YKGUGdGmHJActiR3J93EjZKyOplQ61nmTIyHy03w4CqFxvKYU0SEc8z8nCCPggp2BT2OGEWzFDnZZZjQw0q_motcqwGL6NLb3s40asA-VzvTPx4mYvDIV-yjlLQCR5aDcXu61lvvgA_x80JdqwsrC4zO7FRQyQuqRQmPzi2A">
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">Muhammad Farhan Pratama</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] truncate">NISN: 0068492011 • XII Teknik Jaringan Komputer A</span>
+</div>
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">qr_code_2</span>
+</div>
+</div>
+</div>
+<!-- Interactive Client-side Script for Digital Clock & Check-in Simulation -->
+<script>
+    (() => {
+      // Dynamic Clock update
+      const clockElement = document.getElementById('live-clock');
+      function updateTime() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        if (clockElement) {
+          clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+      }
+      setInterval(updateTime, 1000);
+      updateTime();
+
+      // Check-In Button Interaction
+      const checkinBtn = document.getElementById('btn-checkin');
+      const feedback = document.getElementById('scan-feedback');
+      if (checkinBtn && feedback) {
+        checkinBtn.addEventListener('click', () => {
+          checkinBtn.disabled = true;
+          checkinBtn.innerHTML = `
+            <span class="material-symbols-outlined text-[20px] animate-spin">progress_activity</span>
+            <span>MEMINDAI WAJAH & GPS...</span>
+          `;
+          setTimeout(() => {
+            checkinBtn.classList.add('hidden');
+            feedback.classList.remove('hidden');
+            feedback.classList.add('flex');
+          }, 1200);
+        });
+      }
+    })();
+  </script>
+</div></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(0,0,0,0.04)]" data-active-classes="text-primary-container font-semibold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-all select-none" data-path="home" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm tracking-tight">Home</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 transition-all select-none text-primary-container font-semibold" data-path="pkl" href="#"><span class="material-symbols-outlined text-[22px]">business_center</span><span class="font-label-sm text-label-sm tracking-tight">PKL</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-all select-none" data-path="jurnal" href="#"><span class="material-symbols-outlined text-[22px]">edit_note</span><span class="font-label-sm text-label-sm tracking-tight">Jurnal</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-all select-none" data-path="skills" href="#"><span class="material-symbols-outlined text-[22px]">query_stats</span><span class="font-label-sm text-label-sm tracking-tight">Skills</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-all select-none" data-path="profil" href="#"><span class="material-symbols-outlined text-[22px]">badge</span><span class="font-label-sm text-label-sm tracking-tight">Profil</span></a></div></nav>
+
+</body></html>

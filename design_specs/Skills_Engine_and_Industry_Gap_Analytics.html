@@ -1,0 +1,599 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-tertiary-fixed-variant":"#3f465c","on-secondary-container":"#00476e","surface-container-low":"#eff4ff","surface-container-highest":"#d3e4fe","surface-tint":"#2151da","outline-variant":"#c4c5d7","secondary-fixed-dim":"#93ccff","on-tertiary-fixed":"#131b2e","surface-bright":"#f8f9ff","secondary":"#006398","on-secondary":"#ffffff","on-error":"#ffffff","surface-container-high":"#dce9ff","on-secondary-fixed-variant":"#004b73","surface-dim":"#cbdbf5","secondary-container":"#5bb8fe","tertiary-fixed-dim":"#bec6e0","tertiary":"#3d445a","surface-variant":"#d3e4fe","on-primary-container":"#cad3ff","surface":"#f8f9ff","surface-container":"#e5eeff","on-primary-fixed-variant":"#0039b5","error":"#ba1a1a","on-background":"#0b1c30","inverse-surface":"#213145","primary-fixed-dim":"#b7c4ff","on-surface":"#0b1c30","secondary-fixed":"#cce5ff","background":"#f8f9ff","primary":"#0037b0","on-tertiary-container":"#cdd5ef","on-surface-variant":"#434655","on-error-container":"#93000a","primary-container":"#1d4ed8","on-secondary-fixed":"#001d31","inverse-on-surface":"#eaf1ff","inverse-primary":"#b7c4ff","error-container":"#ffdad6","on-tertiary":"#ffffff","outline":"#747686","tertiary-container":"#545c72","on-primary":"#ffffff","tertiary-fixed":"#dae2fd","primary-fixed":"#dce1ff","surface-container-lowest":"#ffffff","on-primary-fixed":"#001551"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-md":"0.75rem","space-xl":"1.5rem","space-lg":"1rem","margin-mobile":"1rem",margin:"1rem",gutter:"1rem","gutter-mobile":"0.75rem","space-sm":"0.5rem","space-xs":"0.25rem"},fontFamily:{"body-sm":["Inter"],"label-sm":["Inter"],"label-lg":["Inter"],"headline-sm":["Plus Jakarta Sans"],"label-md":["Inter"],"mono-metric":["Inter"],"body-md":["Inter"],"body-lg":["Inter"],"headline-xl":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"]},fontSize:{"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"label-sm":["10px",{lineHeight:"14px",letterSpacing:"0.05em",fontWeight:"700"}],"label-lg":["14px",{lineHeight:"20px",fontWeight:"500"}],"headline-sm":["16px",{lineHeight:"24px",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"mono-metric":["18px",{lineHeight:"22px",letterSpacing:"-0.02em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"headline-xl":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-xl-mobile":["26px",{lineHeight:"34px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"600"}],"headline-md":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}]}}}}</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-inverse-surface text-inverse-on-surface z-50 flex flex-col justify-between py-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col gap-space-lg"><div class="px-space-lg flex items-center gap-space-md"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP-nHsRR85WV5wTr1fVaiazmW44wjp2OSGFPPmqT5jqhuHeYR02D0QwHEi0RsMLsWRU4vXAaqDTmvLcz_20LOFNuFAv_AewBmDnXSDs727QcLb_qZO-4GMEBQ28aSUfTdtE-vHY-BFNtvrQigvCSFytqBbs8Hdrcsi--iqwgMx3RwyX8uVvvrEDI2dcd2L5PrGBXaW1SGHcqGEoDjNo5sDiTF4yT7mUUQ-jBKGcbZAhOjLZSH8IQAhww" alt="Logo SMKN 3 Yogyakarta" class="w-9 h-9 rounded-full object-contain shadow-sm shrink-0"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-surface-bright font-bold leading-tight tracking-tight">SKAGATA AI</span><span class="font-label-sm text-label-sm text-tertiary-fixed-dim uppercase tracking-wider">SMKN 3 Yogyakarta</span></div></div><div class="px-space-md"><div class="bg-on-background/40 rounded-lg p-space-sm flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span><span class="font-label-sm text-label-sm text-surface-container-high uppercase tracking-wide">PKL Intelligence Hub</span></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-tertiary-container text-on-tertiary-container">v2.4</span></div></div><nav class="flex flex-col gap-space-xs px-space-md overflow-y-auto max-h-[calc(100vh-230px)]" data-active-classes="bg-primary text-on-primary font-semibold shadow-sm rounded-lg"><span class="px-space-sm pt-space-xs font-label-sm text-label-sm text-outline-variant uppercase tracking-wider">Core Telemetry</span><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-background/30 hover:text-surface-bright transition-colors" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-label-lg text-label-lg">Overview</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-background/30 hover:text-surface-bright transition-colors" data-path="monitoring" href="#"><span class="material-symbols-outlined text-[20px]">farsight_digital</span><span class="font-label-lg text-label-lg">Live Monitoring</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-background/30 hover:text-surface-bright transition-colors" data-path="placements-companies" href="#"><span class="material-symbols-outlined text-[20px]">corporate_fare</span><span class="font-label-lg text-label-lg">Placements &amp; DUDI</span></a><span class="px-space-sm pt-space-md font-label-sm text-label-sm text-outline-variant uppercase tracking-wider">Vocational AI</span><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-background/30 hover:text-surface-bright transition-colors" data-path="skills-vokasi-analytics" href="#"><span class="material-symbols-outlined text-[20px]">psychology</span><span class="font-label-lg text-label-lg">Skills &amp; Analytics</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-background/30 hover:text-surface-bright transition-colors" data-path="assessments-rubrics" href="#"><span class="material-symbols-outlined text-[20px]">rule</span><span class="font-label-lg text-label-lg">Rubrics &amp; Grading</span></a><span class="px-space-sm pt-space-md font-label-sm text-label-sm text-outline-variant uppercase tracking-wider">Governance</span><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-background/30 hover:text-surface-bright transition-colors" data-path="reports-exports" href="#"><span class="material-symbols-outlined text-[20px]">download_for_offline</span><span class="font-label-lg text-label-lg">Reports &amp; Export</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-background/30 hover:text-surface-bright transition-colors" data-path="audit-rbac" href="#"><span class="material-symbols-outlined text-[20px]">security</span><span class="font-label-lg text-label-lg">System Audit &amp; RBAC</span></a></nav></div><div class="px-space-md"><div class="bg-on-background/30 rounded-xl p-space-md flex flex-col gap-space-sm"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-surface-container-high">SYNC PIPELINE</span><span class="font-label-sm text-label-sm text-secondary-container font-mono">STABLE</span></div><div class="w-full bg-tertiary-container h-1.5 rounded-full overflow-hidden"><div class="bg-secondary-container h-full w-[94%]"></div></div><div class="flex justify-between items-center"><span class="font-body-sm text-body-sm text-outline-variant">Latency 28ms</span><span class="font-body-sm text-body-sm text-outline-variant">TLS 1.3</span></div></div></div></aside><div class="pl-72 min-h-screen flex flex-col"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl z-40 px-space-xl flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-lg"><img alt="Brand logo. - Primary color: #1d4ed8
+- Font: plusJakartaSans
+- Mode: light
+- Roundness: rounded-md
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XILzdTNtWfHMi2dCXzMSTjf7y9ULsstgDPp5ItOjvJO4FZdtX6wSw24pJGLaYAxISKd4eAlS6tDpFK9VcmTPCbTlOf2qTfdsEhvzTIb64uJyYRjNWFIPrGDEHC8ImoYruMlF0O-DXyFmdpq1d7DZxcrf4BP5ajHIRiaZ_IQyVZAMr16t7DOwtjGMHcRi6l6owPmRg2wSg_YUM2GQRBjxtx6Od4audzKBepHo32nvp2UZaBsyPYr3faCzAK"><div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span><span class="font-label-md text-label-md text-secondary font-semibold">WebSocket Sync: Connected</span></div><div class="hidden xl:flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md bg-surface-container px-space-md py-1.5 rounded-lg"><span class="material-symbols-outlined text-[16px] text-primary">calendar_month</span><span class="font-semibold text-on-surface">T.A. 2024/2025 Genap</span></div></div><div class="flex items-center gap-space-md"><div class="relative flex items-center"><button class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button><span class="absolute -top-1 -right-1 h-4 min-w-[16px] px-1 bg-error text-on-error font-label-sm text-label-sm rounded-full flex items-center justify-center font-bold">5</span></div><div class="h-6 w-px bg-outline-variant/40 mx-space-xs"></div><div class="flex items-center gap-space-md"><div class="text-right hidden sm:block"><div class="font-label-lg text-label-lg font-bold text-on-surface leading-tight">Drs. H. Wardono, M.Pd.</div><div class="font-label-sm text-label-sm text-on-surface-variant">Super Admin / Wakasek Hubin</div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface flex-1 px-space-xl py-space-xl"><div class="flex flex-col w-full gap-space-xl">
+<!-- Top Executive Banner & Metadata Strip -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-xl shadow-sm">
+<div class="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-gradient-to-br from-primary-container/10 via-secondary-container/10 to-transparent blur-2xl pointer-events-none"></div>
+<div class="relative flex flex-col xl:flex-row xl:items-center justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+            Engine Telemetry v3.1
+          </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+            Standard: SKKNI Level 2 &amp; 3
+          </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-secondary font-label-sm text-label-sm font-semibold">
+            137 Mitra Industri Validated
+          </span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">SKAGATA Skill Intelligence &amp; Link-and-Match Vokasi Hub</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Pusat komparasi telemetri kesiapan kerja siswa SMKN 3 Yogyakarta terhadap matriks kompetensi DUDI regional DIY-Jateng secara real-time berbasis verifikasi log harian PKL dan feedback mentor industri.
+        </p>
+</div>
+<div class="flex flex-wrap sm:flex-nowrap items-center gap-space-md shrink-0">
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-container-highest hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg transition-colors shadow-sm" id="downloadReportBtn">
+<span class="material-symbols-outlined text-[18px]">sim_card_download</span>
+<span class="">Unduh Rekomendasi Kurikulum</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">publish</span>
+<span class="">Sinkronisasi DUDI Telemetry</span>
+</button>
+</div>
+</div>
+<!-- Quick Vital Statistics Pills -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md mt-space-xl pt-space-lg">
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-lg shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Agregasi Match Index</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">78.4%</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">+4.2% YoY</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Seluruh Jurusan Rekayasa</span>
+</div>
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-lg shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Defisit Kritis (High Priority)</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-lg text-headline-lg font-bold text-error">3 Kompetensi</span>
+<span class="font-label-sm text-label-sm text-error font-bold">&gt;25% Gap</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Automasi, Docker, DevOps</span>
+</div>
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-lg shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Surplus Kesiapan (Ready)</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-lg text-headline-lg font-bold text-secondary">2 Keahlian</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">+18% Cadangan</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Switching &amp; Routing Cisco</span>
+</div>
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-lg shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Evidence Logbook</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">14,820</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">100% Geotagged</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Bukti Terverifikasi DUDI</span>
+</div>
+</div>
+</div>
+<!-- Primary Analytic Core: Section 22 Gap Analysis & AI Prescriptive Module -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-xl">
+<!-- Direct Industry Demand vs Student Supply Gap Comparison (8 Cols) -->
+<div class="xl:col-span-8 flex flex-col bg-surface-container-lowest rounded-xl p-space-xl shadow-sm gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest font-bold">Section 22 • Vocational Benchmark</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">DIY-Jateng Corridor</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface mt-0.5">Direct Demand vs Student Supply Gap Analysis</h2>
+</div>
+<div class="flex items-center gap-space-md self-start sm:self-auto bg-surface-container-low px-space-md py-1.5 rounded-lg text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded bg-primary"></span>
+<span class="text-on-surface font-semibold">Demand DUDI</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded bg-secondary-container"></span>
+<span class="text-on-surface font-semibold">Student Supply (SKAGATA)</span>
+</div>
+</div>
+</div>
+<!-- Interactive Skill Breakdown Rows -->
+<div class="flex flex-col gap-space-lg divide-y divide-surface-container-low/60 pt-space-xs">
+<!-- Item 1: Python Scripting (High Gap) -->
+<div class="pt-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">terminal</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Python Scripting &amp; Test Automation</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Unit SKKNI: J.620100.017.02</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm font-bold bg-error/10 text-error">
+                GAP -46% • High Priority Training
+              </span>
+</div>
+</div>
+<div class="space-y-1 mt-1">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">DUDI Demand Need: <strong class="text-on-surface font-semibold">91%</strong></span>
+<span class="text-on-surface-variant">Kompetensi Siswa Tersedia: <strong class="text-on-surface font-semibold">45%</strong></span>
+</div>
+<div class="relative w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary rounded-l-full" style="width: 91%"></div>
+<div class="absolute inset-0 flex items-center">
+<div class="h-1.5 bg-secondary-container rounded-full shadow-sm ml-0.5" style="width: 45%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2: Computer Networking & Switching (Surplus) -->
+<div class="pt-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">hub</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Computer Networking &amp; Switching Infrastructure</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Unit SKKNI: J.611000.005.01</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm font-bold bg-secondary/15 text-secondary">
+                SURPLUS +18% • Ready for Hire
+              </span>
+</div>
+</div>
+<div class="space-y-1 mt-1">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">DUDI Demand Need: <strong class="text-on-surface font-semibold">73%</strong></span>
+<span class="text-on-surface-variant">Kompetensi Siswa Tersedia: <strong class="text-on-surface font-semibold">91%</strong></span>
+</div>
+<div class="relative w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary rounded-l-full" style="width: 73%"></div>
+<div class="absolute inset-0 flex items-center">
+<div class="h-1.5 bg-secondary-container rounded-full shadow-sm ml-0.5" style="width: 91%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3: Docker & Containerization (High Gap) -->
+<div class="pt-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">deployed_code</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Docker &amp; Containerization Deployment</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Unit SKKNI: J.620900.021.01</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm font-bold bg-error/10 text-error">
+                GAP -33% • Curriculum Expansion Needed
+              </span>
+</div>
+</div>
+<div class="space-y-1 mt-1">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">DUDI Demand Need: <strong class="text-on-surface font-semibold">64%</strong></span>
+<span class="text-on-surface-variant">Kompetensi Siswa Tersedia: <strong class="text-on-surface font-semibold">31%</strong></span>
+</div>
+<div class="relative w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary rounded-l-full" style="width: 64%"></div>
+<div class="absolute inset-0 flex items-center">
+<div class="h-1.5 bg-secondary-container rounded-full shadow-sm ml-0.5" style="width: 31%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 4: Linux Server Administration (Moderate Gap) -->
+<div class="pt-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">dns</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Linux Server Admin &amp; System Hardening</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Unit SKKNI: J.611000.013.02</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm font-bold bg-tertiary-fixed text-on-tertiary-fixed font-semibold">
+                GAP -10% • Moderate Adjustment
+              </span>
+</div>
+</div>
+<div class="space-y-1 mt-1">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">DUDI Demand Need: <strong class="text-on-surface font-semibold">78%</strong></span>
+<span class="text-on-surface-variant">Kompetensi Siswa Tersedia: <strong class="text-on-surface font-semibold">68%</strong></span>
+</div>
+<div class="relative w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary rounded-l-full" style="width: 78%"></div>
+<div class="absolute inset-0 flex items-center">
+<div class="h-1.5 bg-secondary-container rounded-full shadow-sm ml-0.5" style="width: 68%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 5: Cisco & Mikrotik Routing (Surplus) -->
+<div class="pt-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">router</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Cisco &amp; Mikrotik Enterprise Routing</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Unit SKKNI: J.611000.009.02</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm font-bold bg-secondary/15 text-secondary">
+                SURPLUS +19% • Industry Certified
+              </span>
+</div>
+</div>
+<div class="space-y-1 mt-1">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">DUDI Demand Need: <strong class="text-on-surface font-semibold">65%</strong></span>
+<span class="text-on-surface-variant">Kompetensi Siswa Tersedia: <strong class="text-on-surface font-semibold">84%</strong></span>
+</div>
+<div class="relative w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary rounded-l-full" style="width: 65%"></div>
+<div class="absolute inset-0 flex items-center">
+<div class="h-1.5 bg-secondary-container rounded-full shadow-sm ml-0.5" style="width: 84%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 6: Cloud & DevOps Infrastructure (Emerging Gap) -->
+<div class="pt-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">cloud_sync</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Cloud &amp; DevOps CI/CD Infrastructure</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Unit SKKNI: J.620900.045.01</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm font-bold bg-error/10 text-error">
+                GAP -29% • Emerging Need
+              </span>
+</div>
+</div>
+<div class="space-y-1 mt-1">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">DUDI Demand Need: <strong class="text-on-surface font-semibold">58%</strong></span>
+<span class="text-on-surface-variant">Kompetensi Siswa Tersedia: <strong class="text-on-surface font-semibold">29%</strong></span>
+</div>
+<div class="relative w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary rounded-l-full" style="width: 58%"></div>
+<div class="absolute inset-0 flex items-center">
+<div class="h-1.5 bg-secondary-container rounded-full shadow-sm ml-0.5" style="width: 29%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-md bg-surface-container-low/40 p-space-md rounded-lg mt-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">tune</span>
+<span class="font-body-sm text-body-sm text-on-surface">Filter Analisis Sektor:</span>
+<div class="flex gap-1">
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-label-sm text-label-sm">Semua DUDI</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm cursor-pointer hover:bg-surface-container-high">Software House (42)</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm cursor-pointer hover:bg-surface-container-high">ISP &amp; Telco (38)</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Kalkulasi diperbarui 14 menit yang lalu</span>
+</div>
+</div>
+<!-- AI Curriculum Prescription & Strategic Link-and-Match (4 Cols) -->
+<div class="xl:col-span-4 flex flex-col gap-space-lg">
+<!-- AI Prescriptive Action Card -->
+<div class="flex flex-col bg-surface-container-lowest rounded-xl p-space-xl shadow-sm gap-space-md relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wider">AI Prescription Engine</span>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface leading-none">Rekomendasi Kurikulum</h3>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary font-label-sm text-label-sm font-bold">Conf. 94%</span>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-low text-on-surface border-l-4 border-l-primary flex flex-col gap-space-xs">
+<div class="flex items-center gap-1.5 text-primary font-label-md text-label-md font-bold">
+<span class="material-symbols-outlined text-[16px]">assignment_turned_in</span>
+            Penyesuaian Modul Ajar Semester Depan
+          </div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+            “Tingkatkan jam praktik automasi Python &amp; Docker pada konsentrasi TKJ untuk menutup defisit 46% kebutuhan industri regional DIY-Jateng.”
+          </p>
+</div>
+<!-- Prescriptive Strategic Steps -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold">Rencana Intervensi Skagata:</span>
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-low/70">
+<span class="w-5 h-5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-center shrink-0 mt-0.5">1</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Mini-Bootcamp Python Scripting (TKJ &amp; RPL)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sinergi bersama PT Gameloft &amp; PT Telkom Witel Jogja (32 Jam Pertemuan).</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-low/70">
+<span class="w-5 h-5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-center shrink-0 mt-0.5">2</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Redistribusi Alokasi Jam Cisco/Mikrotik</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Surplus +19% memungkinkan pengalihan 20% jam lab ke Docker deployment.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-low/70">
+<span class="w-5 h-5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-center shrink-0 mt-0.5">3</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Pengadaan Server Lab Micro-K3s</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Alokasi BOSP Vokasi untuk penguatan lingkungan simulasi DevOps.</span>
+</div>
+</div>
+</div>
+<!-- Download CTA Card -->
+<div class="mt-space-sm p-space-md rounded-xl bg-inverse-surface text-inverse-on-surface flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary-container text-[20px]">verified</span>
+<span class="font-label-md text-label-md font-bold text-surface-bright">Laporan Kepsek &amp; Kurikulum</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-fixed-dim">PDF • 4.2 MB</span>
+</div>
+<p class="font-body-sm text-body-sm text-tertiary-fixed-dim">
+            Dokumen resmi telaah Link-and-Match untuk disahkan Kepala Sekolah &amp; disampaikan pada Raker DUDI Vokasi.
+          </p>
+<button class="w-full py-2 px-space-md rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg transition-colors flex items-center justify-center gap-space-xs shadow-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span class="">Download Link-and-Match Report</span>
+</button>
+</div>
+</div>
+<!-- Live Industry Partner Sentiment -->
+<div class="flex flex-col bg-surface-container-lowest rounded-xl p-space-lg shadow-sm gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold tracking-wide">Industry Mentor Voice</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="flex items-center gap-space-md">
+<img class="w-11 h-11 rounded-lg object-cover shadow-sm shrink-0" data-alt="Portrait photo of a young Indonesian tech lead mentor smiling in modern tech office wearing an indigo polo shirt, natural warm sunlight, editorial business photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKz4hrpk-Y2X5OoFb-vgU1yywNOuIbeZb_avUqJJyKZIi6CA1b8cVPdRs-Zs7s7FvltwQkn1dmxWMSxZPo2AnOPPO01gZDjnuvwuVbj6Xfn_WnTLGiqlLMQ5WJDMOPoXcq9lLAMvRUqRGLtO7xNyva5RE7FbPFfvQWANWUmHtlkuncvF9rxNkB8e_ySrxQlASZXyLEHB8EGvbVQ9V-1zvI9Ed3nSNz0PF_du6kCgYE">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Arya Wicaksana</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Lead DevOps, PT Solusi Cloud Nusantara</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic">
+          “Siswa SMKN 3 sangat matang di routing hardware, tapi bila dibekali pemahaman basic scripting bash/python dan docker compose, waktu on-boarding magang bisa terpangkas dari 3 bulan jadi 2 minggu.”
+        </p>
+</div>
+</div>
+</div>
+<!-- Top Validated Competency Matrix across 5 Jurusan -->
+<div class="flex flex-col bg-surface-container-lowest rounded-xl p-space-xl shadow-sm gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold">Comprehensive Cross-Department Matrix</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">SKKNI Level 2 &amp; 3 Verification</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface mt-0.5">Top Validated Competency Matrix across 5 Jurusan</h2>
+</div>
+<!-- Department Tabs -->
+<div class="flex items-center gap-1 overflow-x-auto pb-1 max-w-full">
+<button class="px-space-md py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md whitespace-nowrap shadow-sm">TKJ (Teknik Komputer Jaringan)</button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap">RPL (Rekayasa Perangkat Lunak)</button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap">TITL (Instalasi Listrik)</button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap">TP (Teknik Pemesinan)</button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap">TKR (Kendaraan Ringan)</button>
+</div>
+</div>
+<!-- Data Matrix Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3 px-space-md rounded-l-lg">Unit Kompetensi SKKNI</th>
+<th class="py-3 px-space-md">Konsentrasi</th>
+<th class="py-3 px-space-md">Verified Evidence Log</th>
+<th class="py-3 px-space-md">Supervisor Endorsement</th>
+<th class="py-3 px-space-md">Demand Benchmark</th>
+<th class="py-3 px-space-md text-right rounded-r-lg">Status Kelayakan</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low font-body-md text-body-md text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Konfigurasi Routing Dinamis OSPF &amp; BGP</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">KODE: J.611000.009.02 (Level 3)</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm font-semibold">TKJ</span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-2">
+<span class="font-mono-metric text-mono-metric font-bold text-primary">3,842</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">foto/log</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col gap-1 w-32">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="font-semibold text-on-surface">96.4%</span>
+<span class="text-secondary font-bold">Verified</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 96.4%"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="font-label-md text-label-md text-on-surface">Tinggi (Regional DIY)</span>
+</td>
+<td class="py-4 px-space-md text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                Certified Ready
+              </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Automasi Skrip Python &amp; API Client</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">KODE: J.620100.017.02 (Level 3)</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm font-semibold">TKJ / RPL</span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-2">
+<span class="font-mono-metric text-mono-metric font-bold text-error">912</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">foto/log</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col gap-1 w-32">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="font-semibold text-on-surface">54.2%</span>
+<span class="text-error font-bold">Needs Review</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 54.2%"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="font-label-md text-label-md text-error font-semibold">Sangat Kritis (91%)</span>
+</td>
+<td class="py-4 px-space-md text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error/10 text-error font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                Defisit Kritis (-46%)
+              </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Penyambungan Fiber Optic &amp; OTDR Calibration</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">KODE: J.611000.003.01 (Level 2)</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm font-semibold">TKJ</span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-2">
+<span class="font-mono-metric text-mono-metric font-bold text-primary">4,120</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">foto/log</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col gap-1 w-32">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="font-semibold text-on-surface">98.1%</span>
+<span class="text-secondary font-bold">Verified</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 98.1%"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="font-label-md text-label-md text-on-surface">Moderat-Tinggi (82%)</span>
+</td>
+<td class="py-4 px-space-md text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                Certified Ready
+              </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Administrasi Basis Data MySQL &amp; PostgreSQL</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">KODE: J.620100.023.02 (Level 2)</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm font-semibold">RPL</span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-2">
+<span class="font-mono-metric text-mono-metric font-bold text-primary">2,390</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">foto/log</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col gap-1 w-32">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="font-semibold text-on-surface">88.5%</span>
+<span class="text-secondary font-bold">Verified</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 88.5%"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="font-label-md text-label-md text-on-surface">Seimbang (70%)</span>
+</td>
+<td class="py-4 px-space-md text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                Balanced Match
+              </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Dual Evidence Showcase with Context Imagery -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg pt-space-sm">
+<div class="flex items-center gap-space-md p-space-md rounded-xl bg-surface-container-low/50">
+<img class="w-20 h-20 rounded-lg object-cover shrink-0 shadow-sm" data-alt="Close up photograph of a vocational student hands carefully splicing a fiber optic cable using fusion splicer with illuminated micro display inside an electronics laboratory, high detail documentary style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTEjcvYfpiKB8xFQEpDKlSPwlm-jltk7iGW5ck1aSY4zDU9OZ9C6GelKIzX7l0Y2sR01JS-B0LDxkGRv3Ul298-Ie0Yv4n7HJa7OdnAiN3zr-5zEBvMDgTkVDHuRvHc5c4zdM7ASt2WGfqNRi0U0oKpap6raeZjkLaPL7-JF66-70WcrjW3WfGq0BUCdWxavFUxHx8wigUMNPX9CfrI4eKtF2mVv_UeJuyhMilfW30">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm font-bold text-secondary uppercase">Field Telemetry Validated</span>
+</div>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Praktik Splicing &amp; OTDR Mandiri</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Siswa membukukan 84 jam uji coba riil di jaringan distribusi Telkom Akses Yogyakarta.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md p-space-md rounded-xl bg-surface-container-low/50">
+<img class="w-20 h-20 rounded-lg object-cover shrink-0 shadow-sm" data-alt="Modern industrial rack servers with glowing ethernet cables, blinking LED status lights, technician inspecting console terminal in background, vocational training setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9ZVcOCOreXOzO06Q2NFCw84a_VZMuBAQDh9bLthE907uos7dnkkJYBJFamGGXWnS16k-AMPJhyWzfqcV8Lrady4ZA5-ghYq-sE5RVv0wkggPwzcF8qDodYHioSTe9rOHHU24Dhx7C5mrCi-JVquKgK8V0LxmPhX5FCdj7Fn_PiUKmDBeOV_ghX94fe6IpnWYBZG1-HxiJUAtvnI6_heYnjw8WNgEpnofo8A4FeWQG">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm font-bold text-primary uppercase">Modernization In-Progress</span>
+</div>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Migrasi Server Lab ke Containerization</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Unit Komputer TKJ mulai mengintegrasikan Docker Engine untuk modul ujian semester depan.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for curriculum report generation toast
+  document.getElementById('downloadReportBtn')?.addEventListener('click', function() {
+    const btn = this;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span><span>Menyusun Laporan...</span>';
+    btn.classList.add('opacity-75', 'pointer-events-none');
+
+    setTimeout(() => {
+      btn.innerHTML = '<span class="material-symbols-outlined text-[18px] text-secondary">check_circle</span><span>Laporan Terunduh!</span>';
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('opacity-75', 'pointer-events-none');
+      }, 2500);
+    }, 1200);
+  });
+</script></main></div>
+
+</body></html>
