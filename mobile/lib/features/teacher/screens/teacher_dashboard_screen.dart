@@ -35,6 +35,9 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
   List<Map<String, dynamic>> _companyProposals = [];
   String _attendanceFilter = 'all';
   String _classFilter = 'all';
+  String _evidenceFilter = 'all';
+  String _submissionFilter = 'all';
+  String _journalFilter = 'all';
 
   @override
   void initState() {
@@ -1959,13 +1962,13 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
                 text: 'Siswa (${_students.length})'),
             Tab(
                 icon: const Icon(Icons.approval, size: 16),
-                text: 'Approval PKL (${_submissions.length + _companyProposals.length})'),
+                text: 'Approval PKL (${_submissions.where((s) => s.status.toUpperCase() != "APPROVED" && s.status.toUpperCase() != "REJECTED").length + _companyProposals.length})'),
             Tab(
                 icon: const Icon(Icons.verified, size: 16),
-                text: 'Verifikasi Bukti (${_evidences.length})'),
+                text: 'Verifikasi Bukti (${_evidences.where((e) => e.status.toUpperCase() != "VERIFIED" && e.status.toUpperCase() != "REJECTED").length})'),
             Tab(
                 icon: const Icon(Icons.auto_stories, size: 16),
-                text: 'Jurnal (${_journals.length})'),
+                text: 'Jurnal (${_journals.where((j) => (j is Map ? j["status"] : j.status)?.toString().toUpperCase() != "APPROVED").length})'),
             Tab(
                 icon: const Icon(Icons.co_present, size: 16),
                 text: 'Presensi (${_attendanceRecords.length})'),
@@ -2553,58 +2556,134 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
                       ),
                       const SizedBox(height: 12),
                       // Action Buttons
-                      Row(
-                        children: [
-                          Expanded(
-                            child: OutlinedButton(
-                              onPressed: () =>
-                                  _showSubmissionNotesDialog(sub, 'REVISION_REQUIRED'),
-                              style: OutlinedButton.styleFrom(
-                                foregroundColor: AppColors.warning,
-                                side: const BorderSide(color: AppColors.warning),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
-                              ),
-                              child: const Text('Minta Revisi',
-                                  style: TextStyle(fontSize: 11)),
-                            ),
+                      if (sub.status.toUpperCase() == 'APPROVED')
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFECFDF5),
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: const Color(0xFFA7F3D0)),
                           ),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: OutlinedButton(
-                              onPressed: () =>
-                                  _showSubmissionNotesDialog(sub, 'REJECTED'),
-                              style: OutlinedButton.styleFrom(
-                                foregroundColor: AppColors.error,
-                                side: const BorderSide(color: AppColors.error),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
+                          child: const Row(
+                            children: [
+                              Icon(Icons.check_circle, color: Color(0xFF059669), size: 16),
+                              SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  'Penempatan PKL Disetujui (ACC)',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF065F46),
+                                  ),
+                                ),
                               ),
-                              child: const Text('Tolak',
-                                  style: TextStyle(fontSize: 11)),
-                            ),
+                            ],
                           ),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: () => _reviewSubmission(
-                                  sub,
-                                  'APPROVED',
-                                  isChangeRequest
-                                      ? 'Perpindahan PKL disetujui Guru Pembimbing'
-                                      : 'Disetujui oleh Guru Pembimbing'),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF0F766E),
-                                foregroundColor: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
+                        )
+                      else if (sub.status.toUpperCase() == 'REJECTED')
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFFEF2F2),
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: const Color(0xFFFECACA)),
+                          ),
+                          child: const Row(
+                            children: [
+                              Icon(Icons.cancel, color: AppColors.error, size: 16),
+                              SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  'Pengajuan Penempatan Ditolak',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.error,
+                                  ),
+                                ),
                               ),
-                              child: Text(
-                                  isChangeRequest ? 'Setujui Pindah' : 'Setujui',
-                                  style: const TextStyle(
-                                      fontSize: 11, fontWeight: FontWeight.bold)),
-                            ),
+                            ],
                           ),
+                        )
+                      else if (sub.status.toUpperCase() == 'REVISION_REQUIRED')
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFFFFBEB),
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: const Color(0xFFFDE68A)),
+                          ),
+                          child: const Row(
+                            children: [
+                              Icon(Icons.edit_note, color: AppColors.warning, size: 16),
+                              SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  'Menunggu Perbaikan Pengajuan dari Siswa',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF92400E),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      else
+                        Row(
+                          children: [
+                            Expanded(
+                              child: OutlinedButton(
+                                onPressed: () =>
+                                    _showSubmissionNotesDialog(sub, 'REVISION_REQUIRED'),
+                                style: OutlinedButton.styleFrom(
+                                  foregroundColor: AppColors.warning,
+                                  side: const BorderSide(color: AppColors.warning),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8)),
+                                ),
+                                child: const Text('Minta Revisi',
+                                    style: TextStyle(fontSize: 11)),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: OutlinedButton(
+                                onPressed: () =>
+                                    _showSubmissionNotesDialog(sub, 'REJECTED'),
+                                style: OutlinedButton.styleFrom(
+                                  foregroundColor: AppColors.error,
+                                  side: const BorderSide(color: AppColors.error),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8)),
+                                ),
+                                child: const Text('Tolak',
+                                    style: TextStyle(fontSize: 11)),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: ElevatedButton(
+                                onPressed: () => _reviewSubmission(
+                                    sub,
+                                    'APPROVED',
+                                    isChangeRequest
+                                        ? 'Perpindahan PKL disetujui Guru Pembimbing'
+                                        : 'Disetujui oleh Guru Pembimbing'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF0F766E),
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8)),
+                                ),
+                                child: Text(
+                                    isChangeRequest ? 'Setujui Pindah' : 'Setujui',
+                                    style: const TextStyle(
+                                        fontSize: 11, fontWeight: FontWeight.bold)),
+                              ),
+                            ),
                           const SizedBox(width: 8),
                           Container(
                             decoration: BoxDecoration(
@@ -2799,54 +2878,165 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
                 ),
               ],
               const SizedBox(height: 12),
-              Row(
-                children: [
-                  Expanded(
-                    child: OutlinedButton(
-                      onPressed: () =>
-                          _showEvidenceNotesDialog(ev, 'REVISION_REQUIRED'),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: AppColors.warning,
-                        side: const BorderSide(color: AppColors.warning),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                      ),
-                      child: const Text('Minta Revisi',
-                          style: TextStyle(fontSize: 11)),
-                    ),
+              if (ev.status.toUpperCase() == 'VERIFIED')
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFECFDF5),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: const Color(0xFFA7F3D0)),
                   ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: OutlinedButton(
-                      onPressed: () => _showEvidenceNotesDialog(ev, 'REJECTED'),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: AppColors.error,
-                        side: const BorderSide(color: AppColors.error),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                      ),
-                      child:
-                          const Text('Tolak', style: TextStyle(fontSize: 11)),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () => _verifyEvidence(ev, 'VERIFIED',
-                          'Dokumen sah & terverifikasi oleh Guru Pembimbing.'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF0F766E),
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                      ),
-                      child: const Text('Verifikasi',
+                  child: Row(
+                    children: [
+                      const Icon(Icons.check_circle, color: Color(0xFF059669), size: 16),
+                      const SizedBox(width: 8),
+                      const Expanded(
+                        child: Text(
+                          'Sudah Diverifikasi oleh Guru Pembimbing',
                           style: TextStyle(
-                              fontSize: 11, fontWeight: FontWeight.bold)),
-                    ),
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF065F46),
+                          ),
+                        ),
+                      ),
+                      OutlinedButton(
+                        onPressed: () =>
+                            _showEvidenceNotesDialog(ev, 'REVISION_REQUIRED'),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppColors.warning,
+                          side: const BorderSide(color: AppColors.warning),
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          minimumSize: Size.zero,
+                        ),
+                        child: const Text('Minta Revisi', style: TextStyle(fontSize: 10)),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                )
+              else if (ev.status.toUpperCase() == 'REJECTED')
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFFEF2F2),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: const Color(0xFFFECACA)),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.cancel, color: AppColors.error, size: 16),
+                      const SizedBox(width: 8),
+                      const Expanded(
+                        child: Text(
+                          'Dokumen Bukti Ditolak',
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.error,
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () => _verifyEvidence(ev, 'VERIFIED',
+                            'Dokumen sah & terverifikasi oleh Guru Pembimbing.'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF0F766E),
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          minimumSize: Size.zero,
+                        ),
+                        child: const Text('Sahkan Ulang',
+                            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+                      ),
+                    ],
+                  ),
+                )
+              else if (ev.status.toUpperCase() == 'REVISION_REQUIRED' || ev.status.toUpperCase() == 'REVISION')
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFFFFBEB),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: const Color(0xFFFDE68A)),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.edit_note, color: AppColors.warning, size: 16),
+                      const SizedBox(width: 8),
+                      const Expanded(
+                        child: Text(
+                          'Menunggu Perbaikan Siswa (Perlu Revisi)',
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF92400E),
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () => _verifyEvidence(ev, 'VERIFIED',
+                            'Dokumen sah & terverifikasi oleh Guru Pembimbing.'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF0F766E),
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          minimumSize: Size.zero,
+                        ),
+                        child: const Text('Verifikasi Sekarang',
+                            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+                      ),
+                    ],
+                  ),
+                )
+              else
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () =>
+                            _showEvidenceNotesDialog(ev, 'REVISION_REQUIRED'),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppColors.warning,
+                          side: const BorderSide(color: AppColors.warning),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)),
+                        ),
+                        child: const Text('Minta Revisi',
+                            style: TextStyle(fontSize: 11)),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () => _showEvidenceNotesDialog(ev, 'REJECTED'),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppColors.error,
+                          side: const BorderSide(color: AppColors.error),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)),
+                        ),
+                        child:
+                            const Text('Tolak', style: TextStyle(fontSize: 11)),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () => _verifyEvidence(ev, 'VERIFIED',
+                            'Dokumen sah & terverifikasi oleh Guru Pembimbing.'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF0F766E),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)),
+                        ),
+                        child: const Text('Verifikasi',
+                            style: TextStyle(
+                                fontSize: 11, fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ],
+                ),
             ],
           ),
         );
@@ -2991,31 +3181,67 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
                         style: TextStyle(fontSize: 11)),
                   ),
                   const SizedBox(width: 6),
-                  OutlinedButton(
-                    onPressed: () => _showJournalRevisionDialog(j),
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: AppColors.warning,
-                      side: const BorderSide(color: AppColors.warning),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 6),
+                  if (status == 'approved')
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFECFDF5),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: const Color(0xFFA7F3D0)),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.check_circle, color: Color(0xFF059669), size: 14),
+                          SizedBox(width: 4),
+                          Text('Disetujui', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Color(0xFF065F46))),
+                        ],
+                      ),
+                    )
+                  else if (status == 'revision' || status == 'revision_required')
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFFFBEB),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: const Color(0xFFFDE68A)),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.edit_note, color: AppColors.warning, size: 14),
+                          SizedBox(width: 4),
+                          Text('Perlu Revisi', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Color(0xFF92400E))),
+                        ],
+                      ),
+                    )
+                  else ...[
+                    OutlinedButton(
+                      onPressed: () => _showJournalRevisionDialog(j),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: AppColors.warning,
+                        side: const BorderSide(color: AppColors.warning),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 6),
+                      ),
+                      child: const Text('Minta Revisi',
+                          style: TextStyle(fontSize: 11)),
                     ),
-                    child: const Text('Minta Revisi',
-                        style: TextStyle(fontSize: 11)),
-                  ),
-                  const SizedBox(width: 8),
-                  ElevatedButton(
-                    onPressed: () => _reviewJournal(
-                        j['id'], 'approve', 'Disetujui oleh Guru Pembimbing.'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF0F766E),
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 14, vertical: 6),
+                    const SizedBox(width: 8),
+                    ElevatedButton(
+                      onPressed: () => _reviewJournal(
+                          j['id'], 'approve', 'Disetujui oleh Guru Pembimbing.'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF0F766E),
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 14, vertical: 6),
+                      ),
+                      child: const Text('Setujui Jurnal',
+                          style: TextStyle(
+                              fontSize: 11, fontWeight: FontWeight.bold)),
                     ),
-                    child: const Text('Setujui Jurnal',
-                        style: TextStyle(
-                            fontSize: 11, fontWeight: FontWeight.bold)),
-                  ),
+                  ],
                   const SizedBox(width: 8),
                   Container(
                     decoration: BoxDecoration(
