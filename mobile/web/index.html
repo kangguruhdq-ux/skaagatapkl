@@ -83,8 +83,18 @@
           document.head.appendChild(script);
         });
       }
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs) {
+          for (let r of regs) { r.unregister(); }
+        });
+      }
+      if ('caches' in window) {
+        caches.keys().then(function(names) {
+          for (let n of names) { caches.delete(n); }
+        });
+      }
       const bootstrap = document.createElement('script');
-      bootstrap.src = 'flutter_bootstrap.js';
+      bootstrap.src = 'flutter_bootstrap.js?v=' + Date.now();
       document.body.appendChild(bootstrap);
     })();
     window.addEventListener('flutter-first-frame', () => document.getElementById('loading-indicator')?.remove());
