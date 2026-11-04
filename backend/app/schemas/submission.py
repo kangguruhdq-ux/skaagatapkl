@@ -48,8 +48,10 @@ class SubmissionChangeRequest(BaseModel):
     supporting_doc_url: Optional[str] = None
 
 class SubmissionReview(BaseModel):
-    action: str # "APPROVE", "REJECT", "REVISION"
+    action: Optional[str] = None # "APPROVE", "REJECT", "REVISION"
+    status: Optional[str] = None
     notes: Optional[str] = None
+    supervisor_notes: Optional[str] = None
 
 class SubmissionResponse(BaseModel):
     id: int

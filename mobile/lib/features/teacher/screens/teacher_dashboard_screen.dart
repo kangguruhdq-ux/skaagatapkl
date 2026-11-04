@@ -73,10 +73,14 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
     try {
       final res = await ApiClient.get('${ApiEndpoints.baseUrl}/users?role=siswa');
       if (res.success && res.data != null) {
-        if (res.data is List) {
-          _students = res.data as List;
-        } else if (res.data is Map && res.data['items'] is List) {
-          _students = res.data['items'] as List;
+        if (mounted) {
+          setState(() {
+            if (res.data is List) {
+              _students = res.data as List;
+            } else if (res.data is Map && res.data['items'] is List) {
+              _students = res.data['items'] as List;
+            }
+          });
         }
       }
     } catch (_) {}
@@ -85,14 +89,22 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
   Future<void> _fetchSubmissions() async {
     try {
       final subs = await SubmissionService.getSubmissions();
-      _submissions = subs;
+      if (mounted) {
+        setState(() {
+          _submissions = subs;
+        });
+      }
     } catch (_) {}
   }
 
   Future<void> _fetchEvidences() async {
     try {
       final evs = await SubmissionService.getEvidences();
-      _evidences = evs;
+      if (mounted) {
+        setState(() {
+          _evidences = evs;
+        });
+      }
     } catch (_) {}
   }
 
@@ -100,10 +112,14 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
     try {
       final res = await ApiClient.get('${ApiEndpoints.baseUrl}/admin/journals');
       if (res.success && res.data != null) {
-        if (res.data is List) {
-          _journals = res.data as List;
-        } else if (res.data is Map && res.data['items'] is List) {
-          _journals = res.data['items'] as List;
+        if (mounted) {
+          setState(() {
+            if (res.data is List) {
+              _journals = res.data as List;
+            } else if (res.data is Map && res.data['items'] is List) {
+              _journals = res.data['items'] as List;
+            }
+          });
         }
       }
     } catch (_) {}
@@ -113,9 +129,13 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
     try {
       final res = await ApiClient.get(ApiEndpoints.attendanceRecords);
       if (res.success && res.data != null && res.data is List) {
-        _attendanceRecords = (res.data as List)
-            .map((e) => AttendanceRecordModel.fromJson(e))
-            .toList();
+        if (mounted) {
+          setState(() {
+            _attendanceRecords = (res.data as List)
+                .map((e) => AttendanceRecordModel.fromJson(e))
+                .toList();
+          });
+        }
       }
     } catch (_) {}
   }
@@ -123,7 +143,11 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
   Future<void> _fetchCompanyProposals() async {
     try {
       final props = await SubmissionService.getCompanyProposals();
-      _companyProposals = props;
+      if (mounted) {
+        setState(() {
+          _companyProposals = props;
+        });
+      }
     } catch (_) {}
   }
 
@@ -440,23 +464,67 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
   // --- SUBMISSION ACTIONS ---
   Future<void> _reviewSubmission(PklSubmissionModel sub, String status,
       [String? notes]) async {
-    setState(() => _isLoading = true);
+    final idx = _submissions.indexWhere((s) => s.id == sub.id);
+    if (idx != -1) {
+      setState(() {
+        _submissions[idx] = PklSubmissionModel(
+          id: sub.id,
+          studentId: sub.studentId,
+          companyId: sub.companyId,
+          companyName: sub.companyName,
+          address: sub.address,
+          status: status,
+          proposalLetterUrl: sub.proposalLetterUrl,
+          changeReason: sub.changeReason,
+          targetCompanyId: sub.targetCompanyId,
+          supervisorNotes: notes ?? sub.supervisorNotes,
+          notes: notes ?? sub.notes,
+          companyLatitude: sub.companyLatitude,
+          companyLongitude: sub.companyLongitude,
+          submittedAt: sub.submittedAt,
+          reviewedAt: DateTime.now(),
+          studentName: sub.studentName,
+          studentNisn: sub.studentNisn,
+          studentClass: sub.studentClass,
+        );
+      });
+    }
+
     final res = await SubmissionService.reviewSubmission(
       submissionId: sub.id,
       status: status,
       supervisorNotes: notes,
     );
-    await _fetchSubmissions();
     if (mounted) {
-      setState(() => _isLoading = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(res.success
-              ? 'Status pengajuan PKL berhasil diperbarui: $status'
-              : (res.error ?? 'Gagal memproses.')),
-          backgroundColor: res.success ? AppColors.success : AppColors.error,
-        ),
-      );
+      if (res.success) {
+        _fetchSubmissions();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              status == 'APPROVED'
+                  ? 'Pengajuan PKL berhasil disetujui (ACC)!'
+                  : (status == 'REJECTED'
+                      ? 'Pengajuan PKL telah ditolak.'
+                      : 'Pengajuan PKL diminta untuk direvisi.'),
+            ),
+            backgroundColor: status == 'APPROVED'
+                ? AppColors.success
+                : (status == 'REJECTED' ? AppColors.error : AppColors.warning),
+          ),
+        );
+      } else {
+        if (idx != -1) {
+          setState(() {
+            _submissions[idx] = sub;
+          });
+        }
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(res.error ?? 'Gagal memproses pengajuan.'),
+            backgroundColor: AppColors.error,
+          ),
+        );
+      }
     }
   }
 
@@ -527,23 +595,62 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
   // --- EVIDENCE ACTIONS ---
   Future<void> _verifyEvidence(PklEvidenceModel ev, String status,
       [String? notes]) async {
-    setState(() => _isLoading = true);
+    final idx = _evidences.indexWhere((e) => e.id == ev.id);
+    if (idx != -1) {
+      setState(() {
+        _evidences[idx] = PklEvidenceModel(
+          id: ev.id,
+          studentId: ev.studentId,
+          title: ev.title,
+          category: ev.category,
+          description: ev.description,
+          fileUrl: ev.fileUrl,
+          status: status,
+          reviewNotes: notes ?? ev.reviewNotes,
+          submittedAt: ev.submittedAt,
+          verifiedAt: DateTime.now(),
+          studentName: ev.studentName,
+          studentClass: ev.studentClass,
+          companyName: ev.companyName,
+        );
+      });
+    }
+
     final res = await SubmissionService.verifyEvidence(
       evidenceId: ev.id,
       status: status,
       reviewNotes: notes,
     );
-    await _fetchEvidences();
     if (mounted) {
-      setState(() => _isLoading = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(res.success
-              ? 'Dokumen bukti berhasil diverifikasi: $status'
-              : (res.error ?? 'Gagal memverifikasi.')),
-          backgroundColor: res.success ? AppColors.success : AppColors.error,
-        ),
-      );
+      if (res.success) {
+        _fetchEvidences();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              status == 'VERIFIED'
+                  ? 'Dokumen bukti berhasil diverifikasi!'
+                  : (status == 'REJECTED'
+                      ? 'Dokumen bukti telah ditolak.'
+                      : 'Dokumen bukti diminta untuk direvisi.'),
+            ),
+            backgroundColor: status == 'VERIFIED'
+                ? AppColors.success
+                : (status == 'REJECTED' ? AppColors.error : AppColors.warning),
+          ),
+        );
+      } else {
+        if (idx != -1) {
+          setState(() {
+            _evidences[idx] = ev;
+          });
+        }
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(res.error ?? 'Gagal memverifikasi dokumen bukti.'),
+            backgroundColor: AppColors.error,
+          ),
+        );
+      }
     }
   }
 
@@ -639,26 +746,49 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
   }
 
   Future<void> _reviewJournal(int id, String action, [String? notes]) async {
+    final newStatus = (action == 'approve') ? 'APPROVED' : 'REVISION_REQUIRED';
+    final idx = _journals.indexWhere((j) => (j is Map ? j['id'] : j.id) == id);
+    dynamic oldJournal;
+    if (idx != -1) {
+      oldJournal = _journals[idx];
+      setState(() {
+        if (_journals[idx] is Map) {
+          final updated = Map<String, dynamic>.from(_journals[idx]);
+          updated['status'] = newStatus;
+          if (notes != null) updated['revision_notes'] = notes;
+          _journals[idx] = updated;
+        }
+      });
+    }
+
     final notesParam =
         notes != null ? "&notes=${Uri.encodeComponent(notes)}" : "";
     final res = await ApiClient.patch(
       '${ApiEndpoints.baseUrl}/admin/journals/$id/review?action=$action$notesParam',
     );
     if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(res.success
-              ? (action == 'approve'
-                  ? 'Jurnal disetujui Guru Pembimbing!'
-                  : 'Jurnal dikembalikan untuk revisi.')
-              : (res.error ?? 'Gagal memproses jurnal.')),
-          backgroundColor: res.success
-              ? (action == 'approve' ? AppColors.success : AppColors.warning)
-              : AppColors.error,
-        ),
-      );
       if (res.success) {
         _fetchJournals();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(action == 'approve'
+                ? 'Jurnal disetujui Guru Pembimbing!'
+                : 'Jurnal dikembalikan untuk revisi.'),
+            backgroundColor: action == 'approve' ? AppColors.success : AppColors.warning,
+          ),
+        );
+      } else {
+        if (idx != -1 && oldJournal != null) {
+          setState(() {
+            _journals[idx] = oldJournal;
+          });
+        }
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(res.error ?? 'Gagal memproses jurnal.'),
+            backgroundColor: AppColors.error,
+          ),
+        );
       }
     }
   }
@@ -796,7 +926,9 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (ctx) {
-        return Container(
+        return StatefulBuilder(
+          builder: (modalCtx, setModalState) {
+            return Container(
           padding: EdgeInsets.only(
             top: 20,
             left: 20,
@@ -1038,6 +1170,8 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
             ),
           ),
         );
+          },
+        );
       },
     );
   }
@@ -1077,11 +1211,35 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
         return AppColors.success;
       case 'CHANGE_REQUESTED':
       case 'REVISION_REQUIRED':
+      case 'REVISION':
         return AppColors.warning;
       case 'REJECTED':
         return AppColors.error;
       default:
         return AppColors.primary;
+    }
+  }
+
+  String _formatStatusLabel(String status) {
+    switch (status.toUpperCase()) {
+      case 'APPROVED':
+        return 'Disetujui (ACC)';
+      case 'VERIFIED':
+        return 'Sudah Diverifikasi';
+      case 'CHANGE_REQUESTED':
+        return 'Pindah Lokasi';
+      case 'REVISION_REQUIRED':
+      case 'REVISION':
+        return 'Perlu Revisi';
+      case 'REJECTED':
+        return 'Ditolak';
+      case 'PENDING':
+      case 'SUBMITTED':
+      case 'UPLOADED':
+      case 'UNDER_REVIEW':
+        return 'Menunggu Verifikasi';
+      default:
+        return status;
     }
   }
 
@@ -1118,7 +1276,9 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (ctx) {
-        return Container(
+        return StatefulBuilder(
+          builder: (modalCtx, setModalState) {
+            return Container(
           padding: EdgeInsets.only(
             top: 20,
             left: 20,
@@ -1269,7 +1429,7 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
                                                     BorderRadius.circular(6),
                                               ),
                                               child: Text(
-                                                sub.status.toUpperCase(),
+                                                _formatStatusLabel(sub.status),
                                                 style: TextStyle(
                                                   fontSize: 9,
                                                   fontWeight: FontWeight.bold,
@@ -1417,7 +1577,7 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
                                                   BorderRadius.circular(4),
                                             ),
                                             child: Text(
-                                              ev.status,
+                                              _formatStatusLabel(ev.status),
                                               style: TextStyle(
                                                 fontSize: 8,
                                                 fontWeight: FontWeight.bold,
@@ -1498,7 +1658,26 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
                                           const SizedBox(width: 6),
                                           ElevatedButton(
                                             onPressed: () {
-                                              Navigator.pop(ctx);
+                                              setModalState(() {
+                                                final eIdx = studentEvidences.indexWhere((e) => e.id == ev.id);
+                                                if (eIdx != -1) {
+                                                  studentEvidences[eIdx] = PklEvidenceModel(
+                                                    id: ev.id,
+                                                    studentId: ev.studentId,
+                                                    title: ev.title,
+                                                    category: ev.category,
+                                                    description: ev.description,
+                                                    fileUrl: ev.fileUrl,
+                                                    status: 'VERIFIED',
+                                                    reviewNotes: 'Dokumen sah diverifikasi.',
+                                                    submittedAt: ev.submittedAt,
+                                                    verifiedAt: DateTime.now(),
+                                                    studentName: ev.studentName,
+                                                    studentClass: ev.studentClass,
+                                                    companyName: ev.companyName,
+                                                  );
+                                                }
+                                              });
                                               _verifyEvidence(ev, 'VERIFIED',
                                                   'Dokumen sah diverifikasi.');
                                             },
@@ -1583,20 +1762,16 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 6, vertical: 2),
                                             decoration: BoxDecoration(
-                                              color: jStatus == 'approved'
-                                                  ? const Color(0xFFECFDF5)
-                                                  : const Color(0xFFFEF3C7),
+                                              color: _getStatusColor(jStatus).withOpacity(0.15),
                                               borderRadius:
                                                   BorderRadius.circular(4),
                                             ),
                                             child: Text(
-                                              jStatus.toUpperCase(),
+                                              _formatStatusLabel(jStatus),
                                               style: TextStyle(
                                                 fontSize: 8,
                                                 fontWeight: FontWeight.bold,
-                                                color: jStatus == 'approved'
-                                                    ? const Color(0xFF059669)
-                                                    : Colors.amber.shade800,
+                                                color: _getStatusColor(jStatus),
                                               ),
                                             ),
                                           ),
@@ -1663,7 +1838,9 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
                                           const SizedBox(width: 6),
                                           ElevatedButton(
                                             onPressed: () {
-                                              Navigator.pop(ctx);
+                                              setModalState(() {
+                                                j['status'] = 'approved';
+                                              });
                                               _reviewJournal(j['id'], 'approve',
                                                   'Disetujui oleh Guru Pembimbing.');
                                             },
@@ -1696,6 +1873,8 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
               ],
             ),
           ),
+        );
+          },
         );
       },
     );
@@ -2328,7 +2507,7 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: Text(
-                              sub.status,
+                              _formatStatusLabel(sub.status),
                               style: TextStyle(
                                   fontSize: 9,
                                   fontWeight: FontWeight.bold,
@@ -2512,7 +2691,7 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
-                      ev.status,
+                      _formatStatusLabel(ev.status),
                       style: TextStyle(
                           fontSize: 9,
                           fontWeight: FontWeight.bold,
@@ -2753,15 +2932,11 @@ class _TeacherDashboardScreenState extends State<TeacherDashboardScreen>
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
-                      status.toUpperCase(),
+                      _formatStatusLabel(status),
                       style: TextStyle(
                         fontSize: 9,
                         fontWeight: FontWeight.bold,
-                        color: status == 'approved'
-                            ? const Color(0xFF059669)
-                            : status == 'revision' || status == 'revision_required'
-                                ? Colors.amber.shade800
-                                : AppColors.primary,
+                        color: _getStatusColor(status),
                       ),
                     ),
                   ),

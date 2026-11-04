@@ -67,10 +67,15 @@ class SubmissionService {
     required String status,
     String? supervisorNotes,
   }) async {
+    final action = (status == 'APPROVED' || status == 'APPROVE')
+        ? 'APPROVE'
+        : (status == 'REJECTED' || status == 'REJECT' ? 'REJECT' : 'REVISION');
     return await ApiClient.patch(
       '${ApiEndpoints.submissions}/$submissionId/review',
       body: {
+        'action': action,
         'status': status,
+        'notes': supervisorNotes,
         'supervisor_notes': supervisorNotes,
       },
     );

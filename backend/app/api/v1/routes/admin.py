@@ -219,6 +219,7 @@ def get_all_journals(
     )
 
 @router.patch("/journals/{journal_id}/review", response_model=ApiResponse[JournalResponse])
+@router.post("/journals/{journal_id}/review", response_model=ApiResponse[JournalResponse])
 def review_journal(
     journal_id: int,
     action: str = Query(..., pattern="^(approve|revise|revision)$"),
@@ -341,6 +342,7 @@ def create_company(
     )
 
 @router.put("/companies/{id}", response_model=ApiResponse[CompanyResponse])
+@router.patch("/companies/{id}", response_model=ApiResponse[CompanyResponse])
 def update_company(
     id: int,
     payload: CompanyUpdate,

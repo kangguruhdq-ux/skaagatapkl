@@ -117,6 +117,7 @@ def upload_evidence(
     )
 
 @router.patch("/{id}/verify", response_model=ApiResponse[EvidenceResponse])
+@router.post("/{id}/verify", response_model=ApiResponse[EvidenceResponse])
 def verify_evidence(
     id: int,
     payload: EvidenceVerify,

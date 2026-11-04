@@ -282,6 +282,7 @@ def request_company_change(
     )
 
 @router.post("/{id}/review", response_model=ApiResponse[SubmissionResponse])
+@router.patch("/{id}/review", response_model=ApiResponse[SubmissionResponse])
 def review_submission(
     id: int,
     payload: SubmissionReview,
@@ -292,8 +293,16 @@ def review_submission(
     if not sub:
         raise HTTPException(status_code=404, detail="Data pengajuan PKL tidak ditemukan.")
 
-    action = payload.action.upper()
-    sub.teacher_notes = payload.notes or sub.teacher_notes
+    raw_action = payload.action or payload.status or "APPROVE"
+    action = raw_action.upper()
+    if action in ["APPROVED", "APPROVE", "VERIFIED", "ACC"]:
+        action = "APPROVE"
+    elif action in ["REJECTED", "REJECT"]:
+        action = "REJECT"
+    elif action in ["REVISION", "REVISE", "REVISION_REQUIRED"]:
+        action = "REVISION"
+
+    sub.teacher_notes = payload.notes or payload.supervisor_notes or sub.teacher_notes
 
     if action == "APPROVE":
         sub.status = "APPROVED"
@@ -368,6 +377,7 @@ def delete_submission(
         if sub.status in ["APPROVED", "COMPLETED"]:
             raise HTTPException(status_code=400, detail="Pengajuan yang telah disetujui tidak dapat dihapus.")
 
+    db.query(PklEvidence).filter(PklEvidence.submission_id == id).update({"submission_id": None}, synchronize_session=False)
     company_name = sub.company_name
     db.delete(sub)
     db.commit()

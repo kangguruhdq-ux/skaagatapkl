@@ -194,6 +194,7 @@ def create_user(
     )
 
 @router.put("/{user_id}", response_model=ApiResponse[UserResponse])
+@router.patch("/{user_id}", response_model=ApiResponse[UserResponse])
 def update_user(
     user_id: int,
     payload: UserUpdate,
@@ -280,7 +281,8 @@ def delete_user(
         db.delete(s)
     db.query(PklEvidence).filter((PklEvidence.student_id == user_id) | (PklEvidence.verifier_id == user_id)).delete(synchronize_session=False)
 
-    # Clean placements, members, attendances, competencies, notifications, audit logs
+    # Clean placements, members, attendances, competencies, notifications, audit logs, and actor histories
+    db.query(JournalHistory).filter(JournalHistory.actor_id == user_id).delete(synchronize_session=False)
     db.query(PlacementAssignment).filter(PlacementAssignment.student_id == user_id).delete(synchronize_session=False)
     db.query(CompanyMember).filter(CompanyMember.user_id == user_id).delete(synchronize_session=False)
     db.query(AttendanceRecord).filter(AttendanceRecord.student_id == user_id).delete(synchronize_session=False)

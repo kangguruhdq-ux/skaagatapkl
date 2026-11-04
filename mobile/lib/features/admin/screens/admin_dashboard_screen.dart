@@ -1072,23 +1072,69 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen>
   // --- SUBMISSION & APPROVAL PKL ACTIONS (ADMIN) ---
   Future<void> _reviewSubmission(PklSubmissionModel sub, String status,
       [String? notes]) async {
-    setState(() => _isLoading = true);
+    final idx = _submissions.indexWhere((s) => s.id == sub.id);
+    if (idx != -1) {
+      setState(() {
+        _submissions[idx] = PklSubmissionModel(
+          id: sub.id,
+          studentId: sub.studentId,
+          companyId: sub.companyId,
+          companyName: sub.companyName,
+          address: sub.address,
+          status: status,
+          proposalLetterUrl: sub.proposalLetterUrl,
+          changeReason: sub.changeReason,
+          targetCompanyId: sub.targetCompanyId,
+          supervisorNotes: notes ?? sub.supervisorNotes,
+          notes: notes ?? sub.notes,
+          companyLatitude: sub.companyLatitude,
+          companyLongitude: sub.companyLongitude,
+          submittedAt: sub.submittedAt,
+          reviewedAt: DateTime.now(),
+          studentName: sub.studentName,
+          studentNisn: sub.studentNisn,
+          studentClass: sub.studentClass,
+        );
+      });
+    }
+
     final res = await SubmissionService.reviewSubmission(
       submissionId: sub.id,
       status: status,
       supervisorNotes: notes,
     );
-    await _fetchSubmissions();
     if (mounted) {
-      setState(() => _isLoading = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(res.success
-              ? 'Status pengajuan PKL berhasil diperbarui: $status'
-              : (res.error ?? 'Gagal memproses.')),
-          backgroundColor: res.success ? AppColors.success : AppColors.error,
-        ),
-      );
+      if (res.success) {
+        _fetchSubmissions();
+        _fetchStats();
+        _fetchAuditLogs();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              status == 'APPROVED'
+                  ? 'Pengajuan PKL berhasil disetujui (ACC)!'
+                  : (status == 'REJECTED'
+                      ? 'Pengajuan PKL telah ditolak.'
+                      : 'Pengajuan PKL diminta untuk direvisi.'),
+            ),
+            backgroundColor: status == 'APPROVED'
+                ? AppColors.success
+                : (status == 'REJECTED' ? AppColors.error : AppColors.warning),
+          ),
+        );
+      } else {
+        if (idx != -1) {
+          setState(() {
+            _submissions[idx] = sub;
+          });
+        }
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(res.error ?? 'Gagal memproses pengajuan.'),
+            backgroundColor: AppColors.error,
+          ),
+        );
+      }
     }
   }
 
@@ -1278,11 +1324,35 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen>
         return AppColors.success;
       case 'CHANGE_REQUESTED':
       case 'REVISION_REQUIRED':
+      case 'REVISION':
         return AppColors.warning;
       case 'REJECTED':
         return AppColors.error;
       default:
         return AppColors.primary;
+    }
+  }
+
+  String _formatStatusLabel(String status) {
+    switch (status.toUpperCase()) {
+      case 'APPROVED':
+        return 'Disetujui (ACC)';
+      case 'VERIFIED':
+        return 'Sudah Diverifikasi';
+      case 'CHANGE_REQUESTED':
+        return 'Pindah Lokasi';
+      case 'REVISION_REQUIRED':
+      case 'REVISION':
+        return 'Perlu Revisi';
+      case 'REJECTED':
+        return 'Ditolak';
+      case 'PENDING':
+      case 'SUBMITTED':
+      case 'UPLOADED':
+      case 'UNDER_REVIEW':
+        return 'Menunggu';
+      default:
+        return status;
     }
   }
 
@@ -3588,7 +3658,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen>
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: Text(
-                              sub.status,
+                              _formatStatusLabel(sub.status),
                               style: TextStyle(
                                 fontSize: 9,
                                 fontWeight: FontWeight.bold,

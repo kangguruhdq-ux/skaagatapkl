@@ -256,6 +256,7 @@ def submit_journal(
     )
 
 @router.post("/{journal_id}/review", response_model=ApiResponse[JournalResponse])
+@router.patch("/{journal_id}/review", response_model=ApiResponse[JournalResponse])
 def review_journal(
     journal_id: int,
     payload: Optional[JournalReviewRequest] = Body(None),
